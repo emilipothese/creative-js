@@ -5,14 +5,19 @@ canvas.height = window.innerHeight;
 
 let atoms = [];
 
-canvas.addEventListener('mousemove', function(e){
-  for (let i = 0; i < 15; i++) {
-    atoms.push(new Atom(e.x, e.y));
-  }
-});
+/**
+ * Interaction on mousemove
+ */
+
+// canvas.addEventListener('mousemove', function(e){
+//   for (let i = 0; i < 15; i++) {
+//     atoms.push(new Atom(e.x, e.y));
+//   }
+// });
 
 const animate = () => {
   atoms.forEach((atom, index) => {
+    ctx.fillStyle = 'white';
     atom.draw();
     atom.updateSpeed();
     atom.updateSize();
@@ -22,7 +27,8 @@ const animate = () => {
     }
   });
   ctx.save();
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+  // ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.restore();
@@ -35,7 +41,7 @@ class Atom {
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.radius = Math.random() * 8 + 2;
+    this.radius = Math.random() * 2 + 2;
     this.speedX = Math.random() * 4 - 2;
     this.speedY = Math.random() * 4 - 2;
   }
@@ -55,3 +61,21 @@ class Atom {
     ctx.fill();
   }
 }
+
+const point = {
+  x: 0,
+  y: 0
+}
+
+let degree = 0;
+
+const generateAtoms = () => {
+  atoms.push(new Atom(canvas.width / 2 + point.x, canvas.height / 2 + point.y));
+  point.x += Math.cos(degree / 180 * Math.PI);
+  point.y += point.x * point.x;
+
+  degree++;
+  requestAnimationFrame(generateAtoms);
+}
+
+generateAtoms();
