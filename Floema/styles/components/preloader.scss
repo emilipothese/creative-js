@@ -1,0 +1,14 @@
+.preloader {
+  @extend %cover;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.preloader__text {
+  @extend %title-63;
+
+  max-width: 66em;
+}
