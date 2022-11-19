@@ -1,0 +1,12 @@
+.about__gallery {
+  height: 58.6rem;
+  position: relative;
+}
+
+.about__gallery__wrapper {
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
