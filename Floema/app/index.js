@@ -24,6 +24,11 @@ class App {
 
     this.pages = this.pages[this.template]
     this.page.create()
+    this.page.show()
+  }
+
+  addLinkListeners () {
+    const links = document.querySelectorAll('a')
   }
 }
 

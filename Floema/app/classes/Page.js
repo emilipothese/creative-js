@@ -13,4 +13,16 @@ export default class Page {
 
     })
   }
+
+  show () {
+    GSAP.from(this.element, {
+      autoAlpha: 0
+    })
+  }
+
+  hide () {
+    GSAP.to(this.element, {
+      autoAlpha: 0
+    })
+  }
 }
