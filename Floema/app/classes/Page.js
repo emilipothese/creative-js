@@ -15,6 +15,9 @@ export default class Page {
   }
 
   show () {
+    this.animationIn.fromTo(this.element, {
+
+    })
     GSAP.from(this.element, {
       autoAlpha: 0
     })
@@ -24,5 +27,13 @@ export default class Page {
     GSAP.to(this.element, {
       autoAlpha: 0
     })
+  }
+
+  onMouseWheel (event) {
+
+  }
+
+  addEventListeners() {
+    windows.addEventListeners('mousewheel', this.onMouseWheel)
   }
 }
